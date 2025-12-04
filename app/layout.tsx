@@ -8,11 +8,14 @@ export const metadata: Metadata = {
   title: "Hugo Gomes Duarte — Full Stack Developer",
   description:
     "Full Stack Developer with a focus on cybersecurity. Building with React, Next.js, Python, FastAPI, and more.",
+  keywords: ["Full Stack Developer", "React", "Next.js", "Python", "FastAPI", "Cybersecurity", "Portfolio"],
+  authors: [{ name: "Hugo Gomes Duarte" }],
   openGraph: {
     title: "Hugo Gomes Duarte — Full Stack Developer",
     description:
-      "Full Stack Developer with a focus on cybersecurity.",
+      "Full Stack Developer with a focus on cybersecurity — React, Next.js, Python, FastAPI.",
     type: "website",
+    locale: "en_US",
   },
 };
 
