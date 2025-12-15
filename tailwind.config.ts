@@ -8,9 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        surface: "#0f1117",
-        border: "#1e2433",
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
     },
   },

@@ -2,13 +2,6 @@
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data";
 
-const categoryColor: Record<string, string> = {
-  security: "text-red-400 bg-red-400/10 border-red-400/20",
-  fullstack: "text-indigo-400 bg-indigo-400/10 border-indigo-400/20",
-  mobile: "text-violet-400 bg-violet-400/10 border-violet-400/20",
-  ai: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
-};
-
 const categoryLabel: Record<string, string> = {
   security: "Security",
   fullstack: "Full Stack",
@@ -18,73 +11,65 @@ const categoryLabel: Record<string, string> = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section id="projects" className="py-32 px-6 border-t border-zinc-900">
+      <div className="max-w-3xl mx-auto">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-14"
+          transition={{ duration: 0.4 }}
+          className="text-xs font-medium text-zinc-600 uppercase tracking-widest mb-16"
         >
-          <p className="text-indigo-400 text-sm font-mono tracking-widest uppercase mb-3">
-            Work
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Projects</h2>
-        </motion.div>
+          Selected Work
+        </motion.p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div>
           {projects.map((project, i) => (
             <motion.a
               key={project.title}
               href={project.github}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="group flex flex-col bg-[#0f1117] border border-[#1e2433] rounded-xl p-6 hover:border-indigo-500/50 transition-all"
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="group grid grid-cols-[2rem_1fr_auto] gap-6 items-start py-8 border-b border-zinc-900 hover:border-zinc-800 transition-colors cursor-pointer"
             >
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  className={`text-xs font-medium px-2.5 py-1 rounded-full border ${categoryColor[project.category]}`}
-                >
-                  {categoryLabel[project.category]}
-                </span>
-                <svg
-                  className="w-4 h-4 text-gray-600 group-hover:text-indigo-400 transition-colors"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </div>
+              <span className="text-zinc-700 text-xs font-mono mt-1">
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-              <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-indigo-300 transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-5">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs text-gray-500 bg-[#1e2433] px-2 py-1 rounded"
-                  >
-                    {tech}
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-zinc-100 font-medium group-hover:text-white transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="text-[10px] text-zinc-600 border border-zinc-800 rounded px-1.5 py-0.5 hidden sm:inline">
+                    {categoryLabel[project.category]}
                   </span>
-                ))}
+                </div>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.stack.map((tech) => (
+                    <span key={tech} className="text-[11px] text-zinc-700 font-mono">
+                      {tech}
+                    </span>
+                  )).reduce((acc: React.ReactNode[], el, idx, arr) => {
+                    acc.push(el);
+                    if (idx < arr.length - 1) {
+                      acc.push(<span key={`sep-${idx}`} className="text-zinc-800 text-[11px]">·</span>);
+                    }
+                    return acc;
+                  }, [])}
+                </div>
               </div>
+
+              <span className="text-zinc-800 group-hover:text-zinc-500 transition-colors mt-1 text-sm">
+                ↗
+              </span>
             </motion.a>
           ))}
         </div>
@@ -93,16 +78,16 @@ export default function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-8 text-center"
+          transition={{ delay: 0.3 }}
+          className="mt-10"
         >
           <a
             href="https://github.com/HugoDGS"
             target="_blank"
             rel="noreferrer"
-            className="text-gray-500 hover:text-indigo-400 text-sm transition-colors"
+            className="text-xs text-zinc-700 hover:text-zinc-500 transition-colors"
           >
-            View all repositories on GitHub →
+            All repositories on GitHub ↗
           </a>
         </motion.div>
       </div>
