@@ -9,14 +9,14 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6 border-t border-zinc-900">
+    <section id="contact" className="py-32 px-6 border-t border-zinc-800">
       <div className="max-w-3xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs font-medium text-zinc-600 uppercase tracking-widest mb-16"
+          className="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-16"
         >
           Contact
         </motion.p>
@@ -26,7 +26,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-semibold text-zinc-100 tracking-tight mb-6 max-w-sm leading-tight"
+          className="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-6 max-w-sm leading-tight"
         >
           Open to new opportunities.
         </motion.h2>
@@ -36,7 +36,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-sm text-zinc-500 mb-14 max-w-sm leading-relaxed"
+          className="text-sm text-zinc-400 mb-14 max-w-sm leading-relaxed"
         >
           Available for full-stack and security roles. Feel free to reach out.
         </motion.p>
@@ -54,13 +54,13 @@ export default function Contact() {
               href={l.href}
               target={l.label !== "Email" ? "_blank" : undefined}
               rel={l.label !== "Email" ? "noreferrer" : undefined}
-              className="group grid grid-cols-[5rem_1fr_auto] items-center gap-4 py-4 border-b border-zinc-900 hover:border-zinc-800 transition-colors"
+              className="group grid grid-cols-[5rem_1fr_auto] items-center gap-4 py-4 border-b border-zinc-800 hover:border-zinc-700 transition-colors"
             >
-              <span className="text-xs text-zinc-700">{l.label}</span>
-              <span className="text-sm text-zinc-400 group-hover:text-zinc-200 transition-colors">
+              <span className="text-xs text-zinc-600">{l.label}</span>
+              <span className="text-sm text-zinc-300 group-hover:text-white transition-colors">
                 {l.value}
               </span>
-              <span className="text-zinc-800 group-hover:text-zinc-500 transition-colors text-sm">↗</span>
+              <span className="text-zinc-600 group-hover:text-zinc-400 transition-colors text-sm">↗</span>
             </a>
           ))}
         </motion.div>
@@ -70,7 +70,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-zinc-800 text-xs mt-20"
+          className="text-zinc-700 text-xs mt-20"
         >
           Built with Next.js 15 & Tailwind CSS — 2025
         </motion.p>

@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" className="py-32 px-6 border-t border-zinc-900">
+    <section id="about" className="py-32 px-6 border-t border-zinc-800">
       <div className="max-w-3xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs font-medium text-zinc-600 uppercase tracking-widest mb-16"
+          className="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-16"
         >
           Background
         </motion.p>
@@ -21,7 +21,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-5 text-sm text-zinc-500 leading-relaxed"
+            className="space-y-5 text-sm text-zinc-400 leading-relaxed"
           >
             <p>
               I&apos;m a Full Stack developer finishing my studies in France, with experience
@@ -49,9 +49,9 @@ export default function About() {
               { value: "6 mo", label: "Consistent activity" },
               { value: "3", label: "Security tools" },
             ].map((s) => (
-              <div key={s.label} className="border-l border-zinc-800 pl-5">
-                <div className="text-2xl font-semibold text-zinc-200 mb-1">{s.value}</div>
-                <div className="text-xs text-zinc-600">{s.label}</div>
+              <div key={s.label} className="border-l-2 border-zinc-700 pl-5">
+                <div className="text-2xl font-semibold text-white mb-1">{s.value}</div>
+                <div className="text-xs text-zinc-500">{s.label}</div>
               </div>
             ))}
           </motion.div>

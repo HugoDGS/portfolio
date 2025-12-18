@@ -11,14 +11,14 @@ const categoryLabel: Record<string, string> = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-32 px-6 border-t border-zinc-900">
+    <section id="projects" className="py-32 px-6 border-t border-zinc-800">
       <div className="max-w-3xl mx-auto">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="text-xs font-medium text-zinc-600 uppercase tracking-widest mb-16"
+          className="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-16"
         >
           Selected Work
         </motion.p>
@@ -34,40 +34,34 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="group grid grid-cols-[2rem_1fr_auto] gap-6 items-start py-8 border-b border-zinc-900 hover:border-zinc-800 transition-colors cursor-pointer"
+              className="group grid grid-cols-[2rem_1fr_auto] gap-6 items-start py-8 border-b border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer"
             >
-              <span className="text-zinc-700 text-xs font-mono mt-1">
+              <span className="text-zinc-600 text-xs font-mono mt-1">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-zinc-100 font-medium group-hover:text-white transition-colors">
+                  <h3 className="text-white font-medium group-hover:text-zinc-200 transition-colors">
                     {project.title}
                   </h3>
-                  <span className="text-[10px] text-zinc-600 border border-zinc-800 rounded px-1.5 py-0.5 hidden sm:inline">
+                  <span className="text-[10px] text-zinc-500 border border-zinc-700 rounded px-1.5 py-0.5 hidden sm:inline">
                     {categoryLabel[project.category]}
                   </span>
                 </div>
-                <p className="text-zinc-500 text-sm leading-relaxed mb-4">
+                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span key={tech} className="text-[11px] text-zinc-700 font-mono">
-                      {tech}
+                <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  {project.stack.map((tech, idx) => (
+                    <span key={tech} className="text-[11px] text-zinc-600 font-mono">
+                      {tech}{idx < project.stack.length - 1 ? " ·" : ""}
                     </span>
-                  )).reduce((acc: React.ReactNode[], el, idx, arr) => {
-                    acc.push(el);
-                    if (idx < arr.length - 1) {
-                      acc.push(<span key={`sep-${idx}`} className="text-zinc-800 text-[11px]">·</span>);
-                    }
-                    return acc;
-                  }, [])}
+                  ))}
                 </div>
               </div>
 
-              <span className="text-zinc-800 group-hover:text-zinc-500 transition-colors mt-1 text-sm">
+              <span className="text-zinc-700 group-hover:text-zinc-400 transition-colors mt-1 text-sm">
                 ↗
               </span>
             </motion.a>
@@ -85,7 +79,7 @@ export default function Projects() {
             href="https://github.com/HugoDGS"
             target="_blank"
             rel="noreferrer"
-            className="text-xs text-zinc-700 hover:text-zinc-500 transition-colors"
+            className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors"
           >
             All repositories on GitHub ↗
           </a>
